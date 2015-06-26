@@ -219,11 +219,12 @@ var changeAlbumView = function(album) {
 if (document.URL.match(/\/album.html/)) {
   // Wait until the HTML is fully processed.
   $(document).ready(function() {
-
+  
   changeAlbumView(albumPicasso);
-
+    
   });
 }
+
 });
 
 ;require.register("scripts/app", function(exports, require, module) {
