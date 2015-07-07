@@ -1,7 +1,7 @@
-  @import "landing";
-  @import "album";
-  @import "collection";
-  @import "player_bar";
+@import "landing";
+@import "album";
+@import "collection";
+@import "player_bar";
 
 html {
   height: 100%
@@ -11,7 +11,7 @@ body {
   font-family: 'Open Sans';
   color: white;
   min-height: 100%;
-  background: -webkit-radial-gradient(  #2B1339, #380C77);
+  background: -webkit-radial-gradient(  #2B1339, #380C77); 
   background: radial-gradient(  #2B1339, #380C77);
   padding-bottom:  150px;
 }
