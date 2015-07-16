@@ -275,18 +275,19 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
   $stateProvider.state('landing', {
     url: '/',
     controller: 'Landing.controller',
-    templateURL: '/templates/landing.html'
+    templateUrl: '/templates/landing.html'
   });
 }]);
 
+
 // This is a cleaner way to call the controller than crowding it on the module definition.
 blocJams.controller('Landing.controller', ['$scope', function($scope) {
-  $scope.titleText = "Bloc Jams";
   $scope.subText = "Turn the music up!";
 
-   $scope.subTextClicked = function() {
-    $scope.subText += ' ! ';
-   };
+  $scope.subTextClicked = function() {
+    $scope.subText += '!';
+
+   // $scope.titleText = "Bloc Jams";
 
     $scope.albumURLs = [
       '/images/album-placeholders/album-1.jpg',
@@ -300,14 +301,14 @@ blocJams.controller('Landing.controller', ['$scope', function($scope) {
       '/images/album-placeholders/album-9.jpg',
     ];
 
-    $scope.shuffle = function(o) {
-      for(var j, x, i = o.length; i; j= Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-        return o;
-    };
+    //$scope.shuffle = function(o) {
+    // for(var j, x, i = o.length; i; j= Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    //  return o;
+    //};
 
-    $scope.titleTextClicked = function() {
-      $scope.shuffle($scope.albumURLs);
-    };
+    //$scope.titleTextClicked = function() {
+    //  $scope.shuffle($scope.albumURLs);
+  };
 }]);
 });
 
