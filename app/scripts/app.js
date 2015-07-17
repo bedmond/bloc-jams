@@ -3,6 +3,24 @@
 //require('./album');
 //require('./profile');
 
+// Example album.
+var albumPicasso = {
+  name: 'The Colors',
+  artist: 'Pablo Picasso',
+  label: 'Cubism',
+  year: '1881',
+  albumArtUrl: '/images/album-placeholder.png',
+
+  songs: [
+      { name: 'Blue', length: '4:26' },
+      { name: 'Green', length: '3:14' },
+      { name: 'Red', length: '5:01' },
+      { name: 'Pink', length: '3:21' },
+      { name: 'Magenta', length: '2:15' },
+    ]
+};
+
+
 blocJams = angular.module('BlocJams', ['ui.router']);
 
 blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
@@ -13,17 +31,31 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
     controller: 'Landing.controller',
     templateUrl: '/templates/landing.html'
   });
+
+  $stateProvider.state('collection', {
+    url: '/collection',
+    controller: 'Collection.controller',
+    templateUrl: '/templates/collection.html'
+  });
+
+  //$stateProvider.state('songs', {
+  // url: '/songs',
+  //  controller: 'Songs.controller',
+  //  templateUrl: '/templates/songs.html'
+  //});
+
 }]);
 
 
 // This is a cleaner way to call the controller than crowding it on the module definition.
 blocJams.controller('Landing.controller', ['$scope', function($scope) {
+  $scope.titleText = "Bloc Jams";
   $scope.subText = "Turn the music up!";
 
   $scope.subTextClicked = function() {
     $scope.subText += '!';
 
-   // $scope.titleText = "Bloc Jams";
+    $scope.titleText = "Bloc Jams";
 
     $scope.albumURLs = [
       '/images/album-placeholders/album-1.jpg',
@@ -37,12 +69,20 @@ blocJams.controller('Landing.controller', ['$scope', function($scope) {
       '/images/album-placeholders/album-9.jpg',
     ];
 
-    //$scope.shuffle = function(o) {
-    // for(var j, x, i = o.length; i; j= Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-    //  return o;
-    //};
+    $scope.shuffle = function(o) {
+     for(var j, x, i = o.length; i; j= Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+      return o;
+    };
 
-    //$scope.titleTextClicked = function() {
-    //  $scope.shuffle($scope.albumURLs);
+    $scope.titleTextClicked = function() {
+      $scope.shuffle($scope.albumURLs);
+    };
   };
+}]);
+
+blocJams.controller('Collection.controller', ['$scope', function($scope) {
+  $scope.albums = [];
+   for (var i = 0; i < 33; i++) {
+     $scope.albums.push(angular.copy(albumPicasso));
+   }
 }]);
