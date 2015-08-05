@@ -316,7 +316,7 @@ blocJams.directive('slider', ['$document', function($document) {
     templateUrl: '/templates/directives/slider.html',
     replace: true,
     restrict: 'E',
-    scope: { // Creates a scope that exists only in this directive.
+    scope: {
       onChange: '&'
     },
     link: function(scope, element, attributes) {
@@ -326,8 +326,11 @@ blocJams.directive('slider', ['$document', function($document) {
       scope.max = 100;
       var $seekBar = $(element);
 
-      console.log(attributes);
       attributes.$observe('value', function(newValue) {
+        scope.value = numberFromValue(newValue, 0);
+      });
+
+      attributes.$observe('max', function(newValue) {
         scope.max = numberFromValue(newValue, 100) || 100;
       });
 
@@ -366,7 +369,7 @@ blocJams.directive('slider', ['$document', function($document) {
           $document.unbind('mousemove.thumb');
           $document.unbind('mouseup.thumb');
         });
-      };
+      }
 
       var notifyCallback = function(newValue) {
         if (typeof scope.onChange === 'function') {
