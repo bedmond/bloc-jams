@@ -1,7 +1,7 @@
 //require('./landing');
 //require('./collection');
 //require('./album');
-//require('./profile');
+require('./profile');
 
 // Example album.
 var albumPicasso = {
