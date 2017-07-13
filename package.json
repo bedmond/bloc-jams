@@ -9,7 +9,7 @@
     "url": "https://github.com/Bloc/bloc-jamz-checkpoint-outline"
   },
   "engines": {
-    "node": "0.10"
+    "node": "6.11.1"
   },
   "scripts": {
     "start": "brunch watch --server",
