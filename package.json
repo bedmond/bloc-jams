@@ -29,7 +29,7 @@
     "ugly-blanket-brunch": "~1.5.3",
     "async": "0.2",
     "socket.io": ">=0.9.7",
-    "express": "3.4",
+    "express": ">=3.11.0",
     "debug": "~0.7.2",
     "ansi-color": "0.2",
     "date-utils": "1.2",
